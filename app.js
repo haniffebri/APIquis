@@ -24,7 +24,11 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(session({secret:"secretpass123456"}));
+app.use(session({
+  secret:"secretpass123456",
+  resave:true,
+  proxy:true,
+  saveUninitialized:true}));
 app.use(flash());
 app.use(expressValidator());
 app.use(methodOverride(function(req, res){
